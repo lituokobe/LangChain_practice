@@ -12,7 +12,6 @@ pymysql.install_as_MySQLdb() #MySQLdb is not supported in this version of python
 
 os.environ['LANGCHAIN_TRACING'] = "true"
 os.environ['LANGSMITH_ENDPOINT'] = "https://api.smith.langchain.com"
-os.environ['LANGCHAIN_API_KEY'] = "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"
 os.environ['LANGSMITH_PROJECT'] = "pr-shadowy-maybe-22"
 os.environ['LANGCHAIN_PROJECT'] = "Tuo-Demo"
 

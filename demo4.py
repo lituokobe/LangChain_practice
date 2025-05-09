@@ -13,10 +13,9 @@ from langgraph.prebuilt import chat_agent_executor
 
 os.environ['LANGCHAIN_TRACING'] = "true"
 os.environ['LANGSMITH_ENDPOINT'] = "https://api.smith.langchain.com"
-os.environ['LANGCHAIN_API_KEY'] = "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"
 os.environ['LANGSMITH_PROJECT'] = "pr-shadowy-maybe-22"
 os.environ['LANGCHAIN_PROJECT'] = "Tuo-Demo"
-os.environ['TAVILY_API_KEY'] = "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"
+#Tavily API Key is setup in the pycharm project settings, together with openai API key and langchain API key
 
 model = ChatOpenAI(model='gpt-4.1-nano-2025-04-14')
 #answer without agent
