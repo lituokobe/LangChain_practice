@@ -33,44 +33,5 @@ os.environ['LANGCHAIN_PROJECT'] = "Tuo-Demo"
 
 model = ChatOpenAI(model='gpt-4.1-nano-2025-04-14')
 
-#pydantic: process data, validate data, define data format, virtualize or devirtualize data, convert data type.
-#pydantic makes OOP more convenient.
-class Person(BaseModel):
-    """
-    a data module about a person
-    """
-    name: Optional[str] = Field(default=None, description='this is the person name')
-
-    hair_color: Optional[str] = Field(
-        default=None, description="the hair color of the person"
-    )
-    height_in_meters: Optional[str] = Field(
-        default=None, description="height of the person by meters"
-    )
-
-
-class ManyPerson(BaseModel):
-    """
-    data module about many persons
-    """
-    people: List[Person]
-
-
-prompt = ChatPromptTemplate.from_messages(
-    [
-        (
-            "system",
-            "You are an expert on extracting algorithm, and only extract relevant information from unstructured content. If you don't know the value of the attribute, return null for the attribute value.",
-        ),
-        # MessagesPlaceholder('examples'),
-        ("human", "{text}"),
-    ]
-)
-
-#the output is structured. AI helps to extract the structured data from the input text
-chain = {'text': RunnablePassthrough()} | prompt | model.with_structured_output(schema=ManyPerson)
-text = 'There is a girl coming by, with long and brown hair, about 165 cm tall. Her godfather Diego is next to her and 20cm taller than her. Diego has a lighter hair color than his god-daughter.'
-resp = chain.invoke(text)
-print(resp)
 
 
